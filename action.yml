@@ -10,6 +10,6 @@ runs:
   using: "composite"
   steps:
     - run: |
-        ${{ github.action_path }}/setup_env.py ${{ inputs.config-file }}
-      shell: python
+        python ${{ github.action_path }}/setup_env.py ${{ inputs.config-file }}
+      shell: sh
     
