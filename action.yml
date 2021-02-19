@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
     - run: |
-          ls  ${{ github.action_path }}
+          ls  $PWD
       shell: sh  
     - run: |
           python ${{ github.action_path }}/setup_env.py ${{ inputs.config-file }}
