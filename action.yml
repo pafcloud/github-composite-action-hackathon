@@ -5,14 +5,16 @@ inputs:
     description: 'Relative path under $GITHUB_WORKSPACE where the build.json is located.'
     required: false
     default: $GITHUB_WORKSPACE/.metadata/build.json
-
+  version:
+     description: 'A workaround for https://github.com/actions/runner/issues/716'
+     required: true
 runs:
   using: "composite"
   steps:
     - run: |
-          ls  $PWD
+          ls  /__w/_actions/pafcloud/github-composite-action-hackathon/${{ inputs.version }}
       shell: sh  
     - run: |
-          python ${{ github.action_path }}/setup_env.py ${{ inputs.config-file }}
+          python /__w/_actions/pafcloud/github-composite-action-hackathon/${{ inputs.version }}/setup_env.py ${{ inputs.config-file }}
       shell: sh
     
