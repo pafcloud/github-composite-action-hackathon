@@ -1,9 +1,6 @@
 name: 'Build environment setup'
-description: 'Checkout the source code and setup the environment variables'
+description: 'Reads the configuration file and setup the environment variables'
 inputs:
-  path:
-    description: 'Relative path under $GITHUB_WORKSPACE to place the repository.'
-    required: false   
   config-file:
     description: 'Relative path under $GITHUB_WORKSPACE where the build.json is located.'
     required: false
@@ -12,9 +9,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
-      with:
-        path: ${{ inputs.path }}
     - run: |
           python ${{ github.action_path }}/setup_env.py ${{ inputs.config-file }}
       shell: bash
